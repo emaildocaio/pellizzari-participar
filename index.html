@@ -155,7 +155,7 @@
         <div class="field">
           <label for="tel">Seu WhatsApp</label>
           <input type="tel" id="tel" placeholder="(00) 00000-0000"
-                 autocomplete="tel" inputmode="numeric" maxlength="16">
+                 autocomplete="tel" inputmode="numeric">
           <p class="err" id="errTel">Digite um número válido com DDD.</p>
         </div>
 
@@ -189,7 +189,9 @@
   if(NUMERO_CHAPA){ chapa.textContent = NUMERO_CHAPA; } else { chapa.style.display='none'; }
 
   tel.addEventListener('input',()=>{
-    let v=tel.value.replace(/\D/g,'').slice(0,11);
+    let v=tel.value.replace(/\D/g,'');
+    if(v.length>11 && v.startsWith('55')) v=v.slice(2); // remove o código do país (+55) quando vier junto
+    v=v.slice(0,11);
     if(v.length>6) v=`(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
     else if(v.length>2) v=`(${v.slice(0,2)}) ${v.slice(2)}`;
     else if(v.length>0) v=`(${v}`;
