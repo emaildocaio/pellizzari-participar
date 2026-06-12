@@ -83,6 +83,17 @@
     background:#fffdf7;border:1px solid var(--line);border-radius:var(--radius);
     box-shadow:0 16px 40px -24px rgba(58,39,30,.5);padding:22px 20px;margin-top:-44px;position:relative;
   }
+  .autofill-hint{
+    display:flex;align-items:center;gap:11px;
+    background:#fdf8ec;border:1px solid var(--line);border-left:4px solid var(--gold);
+    border-radius:12px;padding:11px 13px;margin-bottom:18px;
+  }
+  .autofill-hint .af-ico{
+    flex:0 0 28px;width:28px;height:28px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;background:var(--gold);color:#fff;
+  }
+  .autofill-hint p{margin:0;font-size:12.5px;line-height:1.42;color:var(--ink)}
+  .autofill-hint b{color:var(--brick-dark);font-weight:700}
   .field{margin-bottom:16px}
   label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
   input[type=text],input[type=tel]{
@@ -145,6 +156,11 @@
 
     <main class="form-area">
       <div class="card">
+
+        <div class="autofill-hint">
+          <span class="af-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M11 21h-1l1-7H7.5c-.88 0-.33-.75-.31-.78C8.48 10.94 10.41 7.6 13 3h1l-1 7h3.49c.4 0 .62.19.42.65C12.95 17.55 11 21 11 21z"/></svg></span>
+          <p>Toque nos campos: seu celular sugere seu <b>nome e WhatsApp</b> para preencher em segundos.</p>
+        </div>
 
         <div class="field">
           <label for="nome">Seu nome</label>
