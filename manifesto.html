@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Assine o Manifesto · Pellizzari 40004</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --gold:#D99A2B; --gold-bg:#E3C488; --gold-deep:#C6892A;
+    --cream:#F7F0DA; --brick:#B0503F; --brick-dark:#8C3C2E;
+    --ink:#3A271E; --muted:#7a6a5f; --line:#e6d8bb; --radius:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);
+       background:var(--cream);-webkit-font-smoothing:antialiased;min-height:100dvh}
+  .wrap{max-width:520px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;
+        box-shadow:0 0 60px -20px rgba(0,0,0,.25)}
+
+  /* HERO */
+  .hero{position:relative;padding:34px 26px 28px;overflow:hidden;color:var(--cream);
+    background:radial-gradient(130% 90% at 80% 0%, rgba(255,255,255,.22), transparent 55%),
+      linear-gradient(155deg, var(--gold-bg) 0%, var(--gold) 60%, var(--gold-deep) 100%);}
+  .eyebrow{display:inline-block;font-family:'Fredoka',sans-serif;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:600;background:rgba(140,60,46,.85);
+    padding:7px 14px;border-radius:999px;margin-bottom:16px}
+  .brand{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
+  .brand .name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;line-height:.9;
+    letter-spacing:.5px;text-shadow:0 3px 0 rgba(140,60,46,.55)}
+  .brand .chapa{font-family:'Fredoka',sans-serif;font-weight:700;font-size:16px;color:var(--brick-dark);
+    background:var(--cream);padding:2px 9px;border-radius:8px;letter-spacing:1px}
+  .hero h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;line-height:1.02;
+    letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
+  .hero p{font-size:15px;line-height:1.55;color:rgba(247,240,218,.94);max-width:40ch}
+
+  /* MANIFESTO */
+  .manifesto{background:var(--brick-dark);color:var(--cream);padding:22px 26px}
+  .manifesto h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:10px}
+  .manifesto p{font-size:14.5px;line-height:1.6;color:rgba(247,240,218,.92);margin-bottom:8px}
+
+  /* FORM */
+  .form-area{flex:1;background:var(--cream);padding:24px 22px 30px}
+  .card{background:#fffdf7;border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:0 16px 40px -24px rgba(58,39,30,.5);padding:22px 20px}
+  .autofill-hint{display:flex;align-items:center;gap:11px;background:#fdf8ec;border:1px solid var(--line);
+    border-left:4px solid var(--gold);border-radius:12px;padding:11px 13px;margin-bottom:18px}
+  .autofill-hint .af-ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:flex;
+    align-items:center;justify-content:center;background:var(--gold);color:#fff}
+  .autofill-hint p{margin:0;font-size:12.5px;line-height:1.42;color:var(--ink)}
+  .autofill-hint b{color:var(--brick-dark)}
+  .field{margin-bottom:15px}
+  label.lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
+  label.lab .opt{font-weight:500;color:var(--muted)}
+  input[type=text],input[type=tel],input[type=email]{width:100%;font-size:16px;font-family:inherit;
+    padding:13px;border:1.5px solid var(--line);border-radius:12px;background:#fffdf6;color:var(--ink);
+    transition:border-color .15s,box-shadow .15s}
+  input::placeholder{color:#b5a68f}
+  input:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(176,80,63,.15)}
+  .err{display:none;color:#b03224;font-size:12.5px;margin-top:6px;font-weight:600}
+  .err.show{display:block}
+
+  /* COMO AJUDAR */
+  .ajuda-title{font-size:13px;font-weight:700;color:var(--ink);margin:6px 0 10px}
+  .ajuda-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
+  .opt-row{display:flex;align-items:flex-start;gap:11px;background:#fbf4e2;border:1px solid var(--line);
+    border-radius:11px;padding:11px 12px;cursor:pointer;transition:.12s}
+  .opt-row:has(input:checked){background:#f6e7c8;border-color:var(--gold-deep)}
+  .opt-row input{appearance:none;-webkit-appearance:none;flex:0 0 21px;width:21px;height:21px;margin-top:1px;
+    border:2px solid var(--brick);border-radius:6px;cursor:pointer;position:relative;transition:.12s}
+  .opt-row input:checked{background:var(--brick);border-color:var(--brick)}
+  .opt-row input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
+    border:solid var(--cream);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .opt-row span{font-size:14px;line-height:1.35;color:var(--ink)}
+
+  .consent{display:flex;gap:11px;align-items:flex-start;background:#fbf4e2;border:1px solid var(--line);
+    border-radius:12px;padding:13px;margin:18px 0;cursor:pointer}
+  .consent input{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;margin-top:1px;
+    border:2px solid var(--brick);border-radius:6px;cursor:pointer;position:relative;transition:.15s}
+  .consent input:checked{background:var(--brick);border-color:var(--brick)}
+  .consent input:checked::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;
+    border:solid var(--cream);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+  .consent span{font-size:12.5px;line-height:1.45;color:var(--muted)}
+
+  .cta{width:100%;border:none;border-radius:14px;cursor:pointer;font-family:'Fredoka',sans-serif;
+    font-size:19px;font-weight:600;padding:16px;color:var(--cream);background:var(--brick);
+    transition:transform .12s,opacity .15s,box-shadow .15s;box-shadow:0 12px 26px -12px rgba(176,80,63,.85)}
+  .cta:active{transform:scale(.985)}
+  .cta:disabled{background:#d8cbb0;color:#9c8e78;box-shadow:none;cursor:not-allowed}
+  .foot{text-align:center;font-size:11.5px;color:#a99878;margin-top:16px;line-height:1.5}
+
+  /* SUCESSO */
+  .success{display:none;text-align:center;padding:14px 6px}
+  .success.show{display:block}
+  .success .check{width:66px;height:66px;border-radius:50%;background:var(--brick);color:var(--cream);
+    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:34px}
+  .success h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;color:var(--brick-dark);margin-bottom:10px}
+  .success p{font-size:15px;line-height:1.55;color:var(--ink);max-width:34ch;margin:0 auto 8px}
+
+  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+  <div class="wrap">
+
+    <header class="hero">
+      <span class="eyebrow">Assine o Manifesto</span>
+      <div class="brand"><span class="name" id="brandName">PELLIZZARI</span><span class="chapa" id="chapa"></span></div>
+      <h1>Educação e futuro para o Rio</h1>
+      <p>Um chamado a todo mundo que acredita que o Rio pode voltar a investir na escola, valorizar o professor e abrir futuro pra juventude.</p>
+    </header>
+
+    <section class="manifesto">
+      <h2>O nosso compromisso</h2>
+      <p>Acreditamos num Rio que coloca a <b>educação no centro</b>: professor valorizado, escola com estrutura, oportunidade pra juventude e cultura como direito.</p>
+      <p>Esse projeto não se constrói sozinho — se constrói com gente. <b>Assine o manifesto e venha construir com a gente.</b></p>
+    </section>
+
+    <main class="form-area">
+      <div class="card">
+        <div id="formBox">
+
+          <div class="autofill-hint">
+            <span class="af-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M11 21h-1l1-7H7.5c-.88 0-.33-.75-.31-.78C8.48 10.94 10.41 7.6 13 3h1l-1 7h3.49c.4 0 .62.19.42.65C12.95 17.55 11 21 11 21z"/></svg></span>
+            <p>Toque nos campos: seu celular sugere seu <b>nome e WhatsApp</b> para preencher em segundos.</p>
+          </div>
+
+          <div class="field">
+            <label class="lab" for="nome">Seu nome</label>
+            <input type="text" id="nome" placeholder="Como você assina?" autocomplete="name" autocapitalize="words">
+          </div>
+          <div class="field">
+            <label class="lab" for="tel">Seu WhatsApp</label>
+            <input type="tel" id="tel" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="numeric">
+            <p class="err" id="errTel">Digite um número válido com DDD.</p>
+          </div>
+          <div class="field">
+            <label class="lab" for="email">E-mail <span class="opt">(opcional)</span></label>
+            <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" inputmode="email">
+          </div>
+          <div class="field">
+            <label class="lab" for="cidade">Cidade / Bairro <span class="opt">(opcional)</span></label>
+            <input type="text" id="cidade" placeholder="Ex.: Tijuca, Niterói, S. Gonçalo…" autocomplete="address-level2">
+          </div>
+          <div class="field">
+            <label class="lab" for="inst">Escola, universidade ou coletivo <span class="opt">(opcional)</span></label>
+            <input type="text" id="inst" placeholder="Onde você estuda, trabalha ou milita" autocapitalize="words">
+          </div>
+
+          <p class="ajuda-title">Como você quer ajudar? <span class="opt" style="font-weight:500;color:var(--muted)">(pode marcar mais de uma)</span></p>
+          <div class="ajuda-grid" id="ajudaGrid"></div>
+
+          <label class="consent" for="consent">
+            <input type="checkbox" id="consent">
+            <span>Autorizo o recebimento de comunicações sobre a campanha por WhatsApp/e-mail e o uso dos meus dados para esse contato, conforme a LGPD. Posso me descadastrar quando quiser.</span>
+          </label>
+
+          <!-- honeypot -->
+          <input type="text" id="hp" name="hp_url" tabindex="-1" autocomplete="off" aria-hidden="true"
+                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+          <button class="cta" id="btn" type="button" disabled>Assinar o manifesto</button>
+          <p class="err" id="errSend" style="text-align:center;margin-top:10px">Não consegui enviar agora. Tente de novo.</p>
+          <p class="foot">Seus dados são usados apenas para o contato autorizado.<br>Nós respeitamos a Lei Geral de Proteção de Dados.</p>
+        </div>
+
+        <div class="success" id="successBox">
+          <div class="check">✓</div>
+          <h2>Manifesto assinado! 🙌</h2>
+          <p>Obrigado por fazer parte, <b id="okName">amigo(a)</b>. Você agora é do time.</p>
+          <p>Em breve a gente te chama pra ajudar do jeitinho que você escolheu.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+<script>
+  // ===== CONFIGURAÇÃO =====
+  const FN_URL = "https://puihfdsshfpianxbjneg.supabase.co/functions/v1/manifesto";
+  const CANDIDATO = "Pellizzari";
+  const NUMERO_CHAPA = "40004";
+  const OPCOES_AJUDA = [
+    "Ajudar financeiramente",
+    "Organizar um encontro com o Renato (em casa, com amigos)",
+    "Ajudar na minha escola ou universidade",
+    "Receber o kit de materiais em casa",
+    "Panfletagem no meu bairro",
+    "Ajudar no WhatsApp",
+    "Ajudar no Instagram",
+    "Cortes e edição de vídeos",
+    "Design gráfico",
+    "Outra forma de ajudar",
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const nome=$('nome'), tel=$('tel'), email=$('email'), cidade=$('cidade'), inst=$('inst'),
+        consent=$('consent'), btn=$('btn'), errTel=$('errTel'), errSend=$('errSend'),
+        chapa=$('chapa'), hp=$('hp'), grid=$('ajudaGrid');
+
+  if(NUMERO_CHAPA){ chapa.textContent = NUMERO_CHAPA; } else { chapa.style.display='none'; }
+
+  // monta as opções "como ajudar"
+  OPCOES_AJUDA.forEach((txt,i)=>{
+    const lbl=document.createElement('label'); lbl.className='opt-row';
+    lbl.innerHTML=`<input type="checkbox" name="ajuda" value="${txt.replace(/"/g,'&quot;')}"><span>${txt}</span>`;
+    grid.appendChild(lbl);
+  });
+
+  const digitos=s=>s.replace(/\D/g,'');
+  const telValido=()=>[10,11].includes(digitos(tel.value).length);
+
+  tel.addEventListener('input',()=>{
+    let v=tel.value.replace(/\D/g,'');
+    if(v.length>11 && v.startsWith('55')) v=v.slice(2); // remove +55 do país
+    v=v.slice(0,11);
+    if(v.length>6) v=`(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
+    else if(v.length>2) v=`(${v.slice(0,2)}) ${v.slice(2)}`;
+    else if(v.length>0) v=`(${v}`;
+    tel.value=v; validar();
+  });
+  nome.addEventListener('input',validar);
+  consent.addEventListener('change',validar);
+
+  function validar(){
+    btn.disabled=!(nome.value.trim().length>=2 && telValido() && consent.checked);
+    errTel.classList.toggle('show', tel.value.length>0 && !telValido());
+  }
+
+  btn.addEventListener('click',async()=>{
+    if(btn.disabled) return;
+    errSend.classList.remove('show');
+    btn.disabled=true; const orig=btn.textContent; btn.textContent='Enviando…';
+    const como=[...document.querySelectorAll('input[name="ajuda"]:checked')].map(c=>c.value);
+    const payload={
+      nome:nome.value.trim(), telefone:digitos(tel.value),
+      email:email.value.trim(), cidade:cidade.value.trim(), instituicao:inst.value.trim(),
+      como_ajudar:como, consentimento:true, origem:'manifesto', website:hp?hp.value:''
+    };
+    try{
+      const r=await fetch(FN_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
+      const j=await r.json().catch(()=>({}));
+      if(r.ok && j.ok){
+        $('okName').textContent = nome.value.trim().split(' ')[0] || 'amigo(a)';
+        $('formBox').style.display='none'; $('successBox').classList.add('show');
+        window.scrollTo({top:0,behavior:'smooth'});
+        return;
+      }
+      throw new Error(j.error||'falha');
+    }catch(e){
+      errSend.classList.add('show'); btn.disabled=false; btn.textContent=orig;
+    }
+  });
+</script>
+</body>
+</html>
