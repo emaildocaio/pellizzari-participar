@@ -58,6 +58,12 @@
     transition:border-color .15s,box-shadow .15s}
   input::placeholder{color:#b5a68f}
   input:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(176,80,63,.15)}
+  select{width:100%;font-size:16px;font-family:inherit;padding:13px 38px 13px 13px;border:1.5px solid var(--line);
+    border-radius:12px;background-color:#fffdf6;color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23B0503F'/%3E%3C/svg%3E");
+    background-repeat:no-repeat;background-position:right 14px center;transition:border-color .15s,box-shadow .15s}
+  select.placeholder{color:#b5a68f}
+  select:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(176,80,63,.15)}
   .err{display:none;color:#b03224;font-size:12.5px;margin-top:6px;font-weight:600}
   .err.show{display:block}
 
@@ -140,8 +146,10 @@
             <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" inputmode="email">
           </div>
           <div class="field">
-            <label class="lab" for="cidade">Cidade / Bairro <span class="opt">(opcional)</span></label>
-            <input type="text" id="cidade" placeholder="Ex.: Tijuca, Niterói, S. Gonçalo…" autocomplete="address-level2">
+            <label class="lab" for="cidade">Sua cidade <span class="opt">(opcional)</span></label>
+            <select id="cidade" class="placeholder">
+              <option value="" selected>Selecione sua cidade…</option>
+            </select>
           </div>
           <div class="field">
             <label class="lab" for="inst">Escola, universidade ou coletivo <span class="opt">(opcional)</span></label>
@@ -206,6 +214,11 @@
     lbl.innerHTML=`<input type="checkbox" name="ajuda" value="${txt.replace(/"/g,'&quot;')}"><span>${txt}</span>`;
     grid.appendChild(lbl);
   });
+
+  // 92 municípios do Estado do RJ (IBGE)
+  const CIDADES_RJ=["Angra dos Reis","Aperibé","Araruama","Areal","Armação dos Búzios","Arraial do Cabo","Barra do Piraí","Barra Mansa","Belford Roxo","Bom Jardim","Bom Jesus do Itabapoana","Cabo Frio","Cachoeiras de Macacu","Cambuci","Campos dos Goytacazes","Cantagalo","Carapebus","Cardoso Moreira","Carmo","Casimiro de Abreu","Comendador Levy Gasparian","Conceição de Macabu","Cordeiro","Duas Barras","Duque de Caxias","Engenheiro Paulo de Frontin","Guapimirim","Iguaba Grande","Itaboraí","Itaguaí","Italva","Itaocara","Itaperuna","Itatiaia","Japeri","Laje do Muriaé","Macaé","Macuco","Magé","Mangaratiba","Maricá","Mendes","Mesquita","Miguel Pereira","Miracema","Natividade","Nilópolis","Niterói","Nova Friburgo","Nova Iguaçu","Paracambi","Paraíba do Sul","Paraty","Paty do Alferes","Petrópolis","Pinheiral","Piraí","Porciúncula","Porto Real","Quatis","Queimados","Quissamã","Resende","Rio Bonito","Rio Claro","Rio das Flores","Rio das Ostras","Rio de Janeiro","Santa Maria Madalena","Santo Antônio de Pádua","São Fidélis","São Francisco de Itabapoana","São Gonçalo","São João da Barra","São João de Meriti","São José de Ubá","São José do Vale do Rio Preto","São Pedro da Aldeia","São Sebastião do Alto","Sapucaia","Saquarema","Seropédica","Silva Jardim","Sumidouro","Tanguá","Teresópolis","Trajano de Moraes","Três Rios","Valença","Varre-Sai","Vassouras","Volta Redonda"];
+  CIDADES_RJ.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cidade.appendChild(o);});
+  cidade.addEventListener('change',()=>cidade.classList.toggle('placeholder', !cidade.value));
 
   const digitos=s=>s.replace(/\D/g,'');
   const telValido=()=>[10,11].includes(digitos(tel.value).length);
