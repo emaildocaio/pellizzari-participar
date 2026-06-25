@@ -177,7 +177,9 @@
           <div class="check">✓</div>
           <h2>Manifesto assinado! 🙌</h2>
           <p>Obrigado por fazer parte, <b id="okName">amigo(a)</b>. Você agora é do time.</p>
-          <p>Em breve a gente te chama pra ajudar do jeitinho que você escolheu.</p>
+          <p>Entra na nossa <b>Comunidade no WhatsApp</b> pra acompanhar tudo em primeira mão e ajudar de perto 👇</p>
+          <a class="cta" id="btnComunidade" href="#" target="_blank" rel="noopener"
+             style="display:block;text-decoration:none;text-align:center;margin-top:8px">Entrar na Comunidade do Pelli</a>
         </div>
       </div>
     </main>
@@ -186,6 +188,7 @@
 <script>
   // ===== CONFIGURAÇÃO =====
   const FN_URL = "https://puihfdsshfpianxbjneg.supabase.co/functions/v1/manifesto";
+  const COMUNIDADE_URL = "https://chat.whatsapp.com/GhcEBOG2gbYBqSLrL5Hl3r?mode=gi_t";
   const CANDIDATO = "Pellizzari";
   const NUMERO_CHAPA = "40004";
   const OPCOES_AJUDA = [
@@ -207,6 +210,7 @@
         chapa=$('chapa'), hp=$('hp'), grid=$('ajudaGrid');
 
   if(NUMERO_CHAPA){ chapa.textContent = NUMERO_CHAPA; } else { chapa.style.display='none'; }
+  document.getElementById('btnComunidade').href = COMUNIDADE_URL;
 
   // monta as opções "como ajudar"
   OPCOES_AJUDA.forEach((txt,i)=>{
