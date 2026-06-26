@@ -3,105 +3,111 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Assine o Manifesto · Pellizzari 40004</title>
+<title>Assine o Manifesto · Pellizzari</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
-    --gold:#D99A2B; --gold-bg:#E3C488; --gold-deep:#C6892A;
-    --cream:#F7F0DA; --brick:#B0503F; --brick-dark:#8C3C2E;
-    --ink:#3A271E; --muted:#7a6a5f; --line:#e6d8bb; --radius:20px;
+    --green:#10A64B; --green-deep:#0A7C38; --green-darker:#075E2A;
+    --yellow:#FBC91B; --yellow-deep:#E7B40B;
+    --blue:#2A2EAE; --blue-deep:#1E2188;
+    --cream:#FFFDF5; --ink:#13261A; --muted:#5b6b60; --line:#dbe7df; --radius:20px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--ink);
-       background:var(--cream);-webkit-font-smoothing:antialiased;min-height:100dvh}
+       background:var(--green);-webkit-font-smoothing:antialiased;min-height:100dvh}
   .wrap{max-width:520px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;
-        box-shadow:0 0 60px -20px rgba(0,0,0,.25)}
+        background:var(--green);box-shadow:0 0 60px -20px rgba(0,0,0,.4)}
 
   /* HERO */
-  .hero{position:relative;padding:34px 26px 28px;overflow:hidden;color:var(--cream);
-    background:radial-gradient(130% 90% at 80% 0%, rgba(255,255,255,.22), transparent 55%),
-      linear-gradient(155deg, var(--gold-bg) 0%, var(--gold) 60%, var(--gold-deep) 100%);}
-  .eyebrow{display:inline-block;font-family:'Fredoka',sans-serif;font-size:12px;letter-spacing:.16em;
-    text-transform:uppercase;font-weight:600;background:rgba(140,60,46,.85);
-    padding:7px 14px;border-radius:999px;margin-bottom:16px}
-  .brand{display:flex;align-items:baseline;gap:10px;margin-bottom:14px}
-  .brand .name{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;line-height:.9;
-    letter-spacing:.5px;text-shadow:0 3px 0 rgba(140,60,46,.55)}
-  .brand .chapa{font-family:'Fredoka',sans-serif;font-weight:700;font-size:16px;color:var(--brick-dark);
-    background:var(--cream);padding:2px 9px;border-radius:8px;letter-spacing:1px}
-  .hero h1{font-family:'Fredoka',sans-serif;font-weight:700;font-size:34px;line-height:1.02;
-    letter-spacing:.5px;text-transform:uppercase;margin-bottom:12px}
-  .hero p{font-size:15px;line-height:1.55;color:rgba(247,240,218,.94);max-width:40ch}
+  .hero{position:relative;padding:30px 26px 26px;overflow:hidden;color:#fff;text-align:center;
+        background:radial-gradient(120% 80% at 50% 0%, var(--green) 30%, var(--green-deep) 100%)}
+  .sunburst{position:absolute;top:-30%;left:50%;width:150%;aspect-ratio:1;transform:translateX(-50%);
+    background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(251,201,27,.20) 0 7deg, transparent 7deg 15deg);
+    -webkit-mask:radial-gradient(closest-side, #000 60%, transparent 100%);
+            mask:radial-gradient(closest-side, #000 60%, transparent 100%);pointer-events:none}
+  .hero-inner{position:relative;z-index:1}
+  .eyebrow{display:inline-block;font-family:'Baloo 2',sans-serif;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;font-weight:700;color:var(--blue);background:var(--yellow);
+    padding:6px 15px;border-radius:999px;margin-bottom:16px}
+  .logo{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:40px;line-height:.9;letter-spacing:1px;
+    color:#fff;text-shadow:0 3px 0 var(--green-darker)}
+  .logo-tag{font-family:'Baloo 2',sans-serif;font-weight:600;font-size:13px;letter-spacing:.05em;
+    color:var(--yellow);margin-top:2px}
+  .star{color:var(--yellow);font-size:20px;vertical-align:middle;margin:0 2px}
+  .hero h1{font-family:'Baloo 2',sans-serif;font-weight:800;font-size:30px;line-height:1.05;margin:18px 0 10px;color:#fff}
+  .hero h1 b{color:var(--yellow)}
+  .hero p{font-size:15px;line-height:1.55;color:rgba(255,255,255,.92);max-width:38ch;margin:0 auto}
 
-  /* MANIFESTO */
-  .manifesto{background:var(--brick-dark);color:var(--cream);padding:22px 26px}
-  .manifesto h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:18px;margin-bottom:10px}
-  .manifesto p{font-size:14.5px;line-height:1.6;color:rgba(247,240,218,.92);margin-bottom:8px}
+  /* MANIFESTO band */
+  .manifesto{background:var(--blue-deep);color:#fff;padding:22px 26px}
+  .manifesto h2{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px;color:var(--yellow)}
+  .manifesto p{font-size:14.5px;line-height:1.6;color:rgba(255,255,255,.92);margin-bottom:8px}
+  .manifesto b{color:#fff}
 
   /* FORM */
-  .form-area{flex:1;background:var(--cream);padding:24px 22px 30px}
-  .card{background:#fffdf7;border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:0 16px 40px -24px rgba(58,39,30,.5);padding:22px 20px}
-  .autofill-hint{display:flex;align-items:center;gap:11px;background:#fdf8ec;border:1px solid var(--line);
-    border-left:4px solid var(--gold);border-radius:12px;padding:11px 13px;margin-bottom:18px}
+  .form-area{flex:1;background:var(--green);padding:18px 22px 26px}
+  .card{background:var(--cream);border:1px solid rgba(0,0,0,.05);border-radius:var(--radius);
+    box-shadow:0 18px 44px -22px rgba(0,0,0,.55);padding:22px 20px}
+  .autofill-hint{display:flex;align-items:center;gap:11px;background:#eafaf0;border:1px solid #cdeed8;
+    border-left:4px solid var(--green);border-radius:12px;padding:11px 13px;margin-bottom:18px}
   .autofill-hint .af-ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:flex;
-    align-items:center;justify-content:center;background:var(--gold);color:#fff}
+    align-items:center;justify-content:center;background:var(--green);color:#fff}
   .autofill-hint p{margin:0;font-size:12.5px;line-height:1.42;color:var(--ink)}
-  .autofill-hint b{color:var(--brick-dark)}
+  .autofill-hint b{color:var(--green-deep)}
   .field{margin-bottom:15px}
   label.lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
   label.lab .opt{font-weight:500;color:var(--muted)}
-  input[type=text],input[type=tel],input[type=email]{width:100%;font-size:16px;font-family:inherit;
-    padding:13px;border:1.5px solid var(--line);border-radius:12px;background:#fffdf6;color:var(--ink);
-    transition:border-color .15s,box-shadow .15s}
-  input::placeholder{color:#b5a68f}
-  input:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(176,80,63,.15)}
+  input[type=text],input[type=tel],input[type=email]{width:100%;font-size:16px;font-family:inherit;padding:13px;
+    border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
+  input::placeholder{color:#a7b3aa}
+  input:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(16,166,75,.16)}
   select{width:100%;font-size:16px;font-family:inherit;padding:13px 38px 13px 13px;border:1.5px solid var(--line);
-    border-radius:12px;background-color:#fffdf6;color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23B0503F'/%3E%3C/svg%3E");
+    border-radius:12px;background-color:#fff;color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%232A2EAE'/%3E%3C/svg%3E");
     background-repeat:no-repeat;background-position:right 14px center;transition:border-color .15s,box-shadow .15s}
-  select.placeholder{color:#b5a68f}
-  select:focus{outline:none;border-color:var(--brick);box-shadow:0 0 0 3px rgba(176,80,63,.15)}
-  .err{display:none;color:#b03224;font-size:12.5px;margin-top:6px;font-weight:600}
+  select.placeholder{color:#a7b3aa}
+  select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(16,166,75,.16)}
+  .err{display:none;color:#c0392b;font-size:12.5px;margin-top:6px;font-weight:600}
   .err.show{display:block}
 
   /* COMO AJUDAR */
   .ajuda-title{font-size:13px;font-weight:700;color:var(--ink);margin:6px 0 10px}
   .ajuda-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
-  .opt-row{display:flex;align-items:flex-start;gap:11px;background:#fbf4e2;border:1px solid var(--line);
+  .opt-row{display:flex;align-items:flex-start;gap:11px;background:#f1faf4;border:1px solid #d7eede;
     border-radius:11px;padding:11px 12px;cursor:pointer;transition:.12s}
-  .opt-row:has(input:checked){background:#f6e7c8;border-color:var(--gold-deep)}
+  .opt-row:has(input:checked){background:#dff5e7;border-color:var(--green)}
   .opt-row input{appearance:none;-webkit-appearance:none;flex:0 0 21px;width:21px;height:21px;margin-top:1px;
-    border:2px solid var(--brick);border-radius:6px;cursor:pointer;position:relative;transition:.12s}
-  .opt-row input:checked{background:var(--brick);border-color:var(--brick)}
+    border:2px solid var(--green);border-radius:6px;cursor:pointer;position:relative;transition:.12s}
+  .opt-row input:checked{background:var(--green);border-color:var(--green)}
   .opt-row input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
-    border:solid var(--cream);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .opt-row span{font-size:14px;line-height:1.35;color:var(--ink)}
 
-  .consent{display:flex;gap:11px;align-items:flex-start;background:#fbf4e2;border:1px solid var(--line);
+  .consent{display:flex;gap:11px;align-items:flex-start;background:#f1faf4;border:1px solid #d7eede;
     border-radius:12px;padding:13px;margin:18px 0;cursor:pointer}
   .consent input{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;margin-top:1px;
-    border:2px solid var(--brick);border-radius:6px;cursor:pointer;position:relative;transition:.15s}
-  .consent input:checked{background:var(--brick);border-color:var(--brick)}
+    border:2px solid var(--green);border-radius:6px;cursor:pointer;position:relative;transition:.15s}
+  .consent input:checked{background:var(--green);border-color:var(--green)}
   .consent input:checked::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;
-    border:solid var(--cream);border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
+    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
   .consent span{font-size:12.5px;line-height:1.45;color:var(--muted)}
 
-  .cta{width:100%;border:none;border-radius:14px;cursor:pointer;font-family:'Fredoka',sans-serif;
-    font-size:19px;font-weight:600;padding:16px;color:var(--cream);background:var(--brick);
-    transition:transform .12s,opacity .15s,box-shadow .15s;box-shadow:0 12px 26px -12px rgba(176,80,63,.85)}
+  .cta{width:100%;border:none;border-radius:14px;cursor:pointer;font-family:'Baloo 2',sans-serif;
+    font-size:20px;font-weight:800;padding:15px;color:var(--blue);background:var(--yellow);letter-spacing:.3px;
+    transition:transform .12s,opacity .15s,box-shadow .15s;box-shadow:0 12px 24px -10px rgba(231,180,11,.85)}
   .cta:active{transform:scale(.985)}
-  .cta:disabled{background:#d8cbb0;color:#9c8e78;box-shadow:none;cursor:not-allowed}
-  .foot{text-align:center;font-size:11.5px;color:#a99878;margin-top:16px;line-height:1.5}
+  .cta:disabled{background:#e3e9e4;color:#9aa89e;box-shadow:none;cursor:not-allowed}
+  .cta-green{color:#fff;background:var(--green);box-shadow:0 12px 24px -10px rgba(10,124,56,.8)}
+  .foot{text-align:center;font-size:11.5px;color:var(--muted);margin-top:16px;line-height:1.5}
 
   /* SUCESSO */
   .success{display:none;text-align:center;padding:14px 6px}
   .success.show{display:block}
-  .success .check{width:66px;height:66px;border-radius:50%;background:var(--brick);color:var(--cream);
+  .success .check{width:66px;height:66px;border-radius:50%;background:var(--green);color:#fff;
     display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:34px}
-  .success h2{font-family:'Fredoka',sans-serif;font-weight:600;font-size:24px;color:var(--brick-dark);margin-bottom:10px}
+  .success h2{font-family:'Baloo 2',sans-serif;font-weight:700;font-size:24px;color:var(--green-deep);margin-bottom:10px}
   .success p{font-size:15px;line-height:1.55;color:var(--ink);max-width:34ch;margin:0 auto 8px}
 
   @media (prefers-reduced-motion: reduce){*{transition:none!important}}
@@ -111,10 +117,15 @@
   <div class="wrap">
 
     <header class="hero">
-      <span class="eyebrow">Assine o Manifesto</span>
-      <div class="brand"><span class="name" id="brandName">PELLIZZARI</span><span class="chapa" id="chapa"></span></div>
-      <h1>Educação e futuro para o Rio</h1>
-      <p>Um chamado a todo mundo que acredita que o Rio pode voltar a investir na escola, valorizar o professor e abrir futuro pra juventude.</p>
+      <div class="sunburst"></div>
+      <div class="hero-inner">
+        <span class="eyebrow">Assine o Manifesto</span>
+        <!-- LOGO (recriado em texto — trocar pelo PNG/SVG oficial quando tiver) -->
+        <div class="logo">PELLIZZARI</div>
+        <div class="logo-tag"><span class="star">★</span> pré-candidato a dep. estadual <span class="star">★</span></div>
+        <h1><b>Educação</b> e futuro para o Rio</h1>
+        <p>Um chamado a todo mundo que acredita que o Rio pode voltar a investir na escola, valorizar o professor e abrir futuro pra juventude.</p>
+      </div>
     </header>
 
     <section class="manifesto">
@@ -164,7 +175,6 @@
             <span>Autorizo o recebimento de comunicações sobre a campanha por WhatsApp/e-mail e o uso dos meus dados para esse contato, conforme a LGPD. Posso me descadastrar quando quiser.</span>
           </label>
 
-          <!-- honeypot -->
           <input type="text" id="hp" name="hp_url" tabindex="-1" autocomplete="off" aria-hidden="true"
                  style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
@@ -178,7 +188,7 @@
           <h2>Manifesto assinado! 🙌</h2>
           <p>Obrigado por fazer parte, <b id="okName">amigo(a)</b>. Você agora é do time.</p>
           <p>Entra na nossa <b>Comunidade no WhatsApp</b> pra acompanhar tudo em primeira mão e ajudar de perto 👇</p>
-          <a class="cta" id="btnComunidade" href="#" target="_blank" rel="noopener"
+          <a class="cta cta-green" id="btnComunidade" href="#" target="_blank" rel="noopener"
              style="display:block;text-decoration:none;text-align:center;margin-top:8px">Entrar na Comunidade do Pelli</a>
         </div>
       </div>
@@ -189,8 +199,6 @@
   // ===== CONFIGURAÇÃO =====
   const FN_URL = "https://puihfdsshfpianxbjneg.supabase.co/functions/v1/manifesto";
   const COMUNIDADE_URL = "https://chat.whatsapp.com/GhcEBOG2gbYBqSLrL5Hl3r?mode=gi_t";
-  const CANDIDATO = "Pellizzari";
-  const NUMERO_CHAPA = "40004";
   const OPCOES_AJUDA = [
     "Ajudar financeiramente",
     "Organizar um encontro com o Renato (em casa, com amigos)",
@@ -207,12 +215,10 @@
   const $ = (id) => document.getElementById(id);
   const nome=$('nome'), tel=$('tel'), email=$('email'), cidade=$('cidade'), inst=$('inst'),
         consent=$('consent'), btn=$('btn'), errTel=$('errTel'), errSend=$('errSend'),
-        chapa=$('chapa'), hp=$('hp'), grid=$('ajudaGrid');
+        hp=$('hp'), grid=$('ajudaGrid');
 
-  if(NUMERO_CHAPA){ chapa.textContent = NUMERO_CHAPA; } else { chapa.style.display='none'; }
-  document.getElementById('btnComunidade').href = COMUNIDADE_URL;
+  $('btnComunidade').href = COMUNIDADE_URL;
 
-  // monta as opções "como ajudar"
   OPCOES_AJUDA.forEach((txt,i)=>{
     const lbl=document.createElement('label'); lbl.className='opt-row';
     lbl.innerHTML=`<input type="checkbox" name="ajuda" value="${txt.replace(/"/g,'&quot;')}"><span>${txt}</span>`;
@@ -229,7 +235,7 @@
 
   tel.addEventListener('input',()=>{
     let v=tel.value.replace(/\D/g,'');
-    if(v.length>11 && v.startsWith('55')) v=v.slice(2); // remove +55 do país
+    if(v.length>11 && v.startsWith('55')) v=v.slice(2);
     v=v.slice(0,11);
     if(v.length>6) v=`(${v.slice(0,2)}) ${v.slice(2,7)}-${v.slice(7)}`;
     else if(v.length>2) v=`(${v.slice(0,2)}) ${v.slice(2)}`;
