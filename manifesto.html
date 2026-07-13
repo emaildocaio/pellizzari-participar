@@ -8,226 +8,160 @@
   @font-face{font-family:"Intro Rust";src:url("fonts/IntroRust-Display.woff2") format("woff2");font-weight:400 900;font-display:swap}
   @font-face{font-family:"Aileron";src:url("fonts/Aileron-Regular.woff2") format("woff2");font-weight:400;font-display:swap}
   @font-face{font-family:"Aileron";src:url("fonts/Aileron-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"TT Backwards Script";src:url("fonts/TTBackwardsScript-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
 
-  :root{
-    --laranja:#ff6b2d; --laranja-600:#f0561a; --laranja-700:#c6430f;
-    --amarelo:#fac730; --amarelo-600:#ce9810;
-    --marrom:#4c241a; --marrom-900:#2a130d;
-    --creme:#f8e8c5; --creme-100:#fffdf7; --creme-200:#fcf3dd;
-    --ink:#4c241a; --muted:#6b3626; --line:#e7d4a8; --radius:20px;
-    --fd:"Intro Rust",Fredoka,ui-rounded,system-ui,sans-serif;
-    --fb:"Aileron",Mulish,-apple-system,system-ui,sans-serif;
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:var(--fb);color:var(--ink);background:var(--marrom);-webkit-font-smoothing:antialiased;min-height:100dvh}
-  .wrap{max-width:520px;margin:0 auto;min-height:100dvh;display:flex;flex-direction:column;
-        background:var(--creme);box-shadow:0 0 60px -20px rgba(0,0,0,.5)}
-
-  /* HERO */
-  .hero{position:relative;padding:28px 26px 22px;overflow:hidden;color:var(--creme);text-align:center;
-        background:radial-gradient(120% 80% at 50% 0%, #5a2c1f 0%, var(--marrom) 62%)}
-  .sunburst{position:absolute;top:-34%;left:50%;width:160%;aspect-ratio:1;transform:translateX(-50%);
-    background:repeating-conic-gradient(from 0deg at 50% 50%, rgba(250,199,48,.20) 0 7deg, transparent 7deg 15deg);
-    -webkit-mask:radial-gradient(closest-side, #000 58%, transparent 100%);
-            mask:radial-gradient(closest-side, #000 58%, transparent 100%);pointer-events:none}
-  .hero-inner{position:relative;z-index:1}
-  .eyebrow{display:inline-block;font-family:var(--fb);font-size:12px;letter-spacing:.16em;
-    text-transform:uppercase;font-weight:700;color:var(--marrom);background:var(--amarelo);
-    padding:6px 15px;border-radius:999px;margin-bottom:16px}
-  .logo{width:min(74%,280px);height:auto;margin:0 auto 4px;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.3))}
-  .hero h1{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:30px;line-height:1.04;
-    letter-spacing:-.01em;margin:16px 0 10px;color:var(--creme)}
-  .hero h1 b{color:var(--amarelo)}
-  .hero p{font-size:15px;line-height:1.55;color:rgba(248,232,197,.9);max-width:38ch;margin:0 auto}
-
-  /* MANIFESTO band */
-  .manifesto{background:var(--laranja);color:var(--marrom);padding:22px 26px}
-  .manifesto h2{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:20px;margin-bottom:8px;color:var(--marrom-900)}
-  .manifesto p{font-size:14.5px;line-height:1.6;color:var(--marrom);margin-bottom:8px}
-  .manifesto b{color:var(--marrom-900)}
-
-  /* FORM */
-  .form-area{flex:1;background:var(--creme);padding:18px 22px 26px}
-  .card{background:var(--creme-100);border:1px solid var(--line);border-radius:var(--radius);
-    box-shadow:0 18px 44px -22px rgba(74,36,26,.55);padding:22px 20px}
-  .autofill-hint{display:flex;align-items:center;gap:11px;background:var(--creme-200);border:1px solid var(--line);
-    border-left:4px solid var(--laranja);border-radius:12px;padding:11px 13px;margin-bottom:18px}
-  .autofill-hint .af-ico{flex:0 0 28px;width:28px;height:28px;border-radius:50%;display:flex;
-    align-items:center;justify-content:center;background:var(--laranja);color:#fff}
-  .autofill-hint p{margin:0;font-size:12.5px;line-height:1.42;color:var(--ink)}
-  .autofill-hint b{color:var(--laranja-700)}
-  .field{margin-bottom:15px}
-  label.lab{display:block;font-size:13px;font-weight:700;color:var(--ink);margin-bottom:7px}
-  label.lab .opt{font-weight:500;color:var(--muted)}
-  input[type=text],input[type=tel],input[type=email]{width:100%;font-size:16px;font-family:inherit;padding:13px;
-    border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);transition:border-color .15s,box-shadow .15s}
-  input::placeholder{color:#b3a184}
-  input:focus{outline:none;border-color:var(--laranja);box-shadow:0 0 0 3px rgba(255,107,45,.22)}
-  select{width:100%;font-size:16px;font-family:inherit;padding:13px 38px 13px 13px;border:1.5px solid var(--line);
-    border-radius:12px;background-color:#fff;color:var(--ink);cursor:pointer;-webkit-appearance:none;appearance:none;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23c6430f'/%3E%3C/svg%3E");
-    background-repeat:no-repeat;background-position:right 14px center;transition:border-color .15s,box-shadow .15s}
-  select.placeholder{color:#b3a184}
-  select:focus{outline:none;border-color:var(--laranja);box-shadow:0 0 0 3px rgba(255,107,45,.22)}
-  .err{display:none;color:#c0392b;font-size:12.5px;margin-top:6px;font-weight:600}
+  *{box-sizing:border-box}
+  body{margin:0;background:#4c241a;color:#4c241a;font-family:"Aileron",system-ui,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:#c6430f}a:hover{color:#ff6b2d}
+  input:focus-visible,select:focus-visible,button:focus-visible,a:focus-visible{outline:3px solid #ff6b2d;outline-offset:2px}
+  .inp{font-family:"Aileron",sans-serif;font-size:1rem;color:#4c241a;background:#fcf3dd;border:2px solid #e7d4a8;
+    border-radius:14px;padding:.9rem 1rem;min-height:44px;box-sizing:border-box;width:100%;transition:border-color .15s,box-shadow .15s,background .15s}
+  .inp::placeholder{color:#b3a184}
+  .inp:focus{outline:none;border-color:#ff6b2d;background:#fffdf7;box-shadow:0 0 0 3px rgba(255,107,45,.18)}
+  select.inp{min-height:48px;cursor:pointer}
+  .btn{font-family:"Intro Rust",sans-serif;font-weight:700;font-size:1.1rem;text-transform:uppercase;background:#ff6b2d;
+    color:#fffdf7;border:none;border-radius:999px;padding:1rem 1.8rem;min-height:52px;cursor:pointer;box-shadow:4px 4px 0 #4c241a;
+    margin-top:.2rem;display:inline-flex;align-items:center;justify-content:center;gap:.6rem;transition:transform .1s,box-shadow .1s,background .12s;width:100%}
+  .btn:hover{background:#f0561a}
+  .btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #4c241a}
+  .btn:disabled{background:#e3d7bd;color:#a4906f;box-shadow:none;cursor:not-allowed}
+  .abtn{background:#fac730;color:#4c241a}
+  .abtn:hover{background:#edb417;color:#4c241a}
+  .err{display:none;color:#c0392b;font-size:.8rem;font-weight:600;margin:.35rem 0 0;text-align:center}
   .err.show{display:block}
-
-  /* COMO AJUDAR */
-  .ajuda-title{font-size:13px;font-weight:700;color:var(--ink);margin:6px 0 10px}
-  .ajuda-grid{display:flex;flex-direction:column;gap:8px;margin-bottom:6px}
-  .opt-row{display:flex;align-items:flex-start;gap:11px;background:var(--creme-200);border:1px solid var(--line);
-    border-radius:11px;padding:11px 12px;cursor:pointer;transition:.12s}
-  .opt-row:has(input:checked){background:#ffe1d0;border-color:var(--laranja)}
-  .opt-row input{appearance:none;-webkit-appearance:none;flex:0 0 21px;width:21px;height:21px;margin-top:1px;
-    border:2px solid var(--laranja);border-radius:6px;cursor:pointer;position:relative;transition:.12s}
-  .opt-row input:checked{background:var(--laranja);border-color:var(--laranja)}
-  .opt-row input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;
-    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
-  .opt-row span{font-size:14px;line-height:1.35;color:var(--ink)}
-
-  .consent{display:flex;gap:11px;align-items:flex-start;background:var(--creme-200);border:1px solid var(--line);
-    border-radius:12px;padding:13px;margin:18px 0;cursor:pointer}
-  .consent input{appearance:none;-webkit-appearance:none;flex:0 0 22px;width:22px;height:22px;margin-top:1px;
-    border:2px solid var(--laranja);border-radius:6px;cursor:pointer;position:relative;transition:.15s}
-  .consent input:checked{background:var(--laranja);border-color:var(--laranja)}
-  .consent input:checked::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;
-    border:solid #fff;border-width:0 2.5px 2.5px 0;transform:rotate(45deg)}
-  .consent span{font-size:12.5px;line-height:1.45;color:var(--muted)}
-
-  .cta{width:100%;border:none;border-radius:14px;cursor:pointer;font-family:var(--fd);
-    font-size:20px;font-weight:800;text-transform:uppercase;padding:15px;color:var(--creme-100);background:var(--laranja);letter-spacing:.4px;
-    transition:transform .12s,opacity .15s,box-shadow .15s;box-shadow:4px 4px 0 var(--marrom)}
-  .cta:active{transform:translate(-1px,-1px)}
-  .cta:disabled{background:#e3d7bd;color:#a4906f;box-shadow:none;cursor:not-allowed}
-  .cta-amarelo{color:var(--marrom);background:var(--amarelo);box-shadow:4px 4px 0 var(--marrom)}
-  .foot{text-align:center;font-size:11.5px;color:var(--muted);margin-top:16px;line-height:1.5}
-
-  /* SUCESSO */
-  .success{display:none;text-align:center;padding:14px 6px}
-  .success.show{display:block}
-  .success .check{width:66px;height:66px;border-radius:50%;background:var(--laranja);color:#fff;
-    display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:34px;box-shadow:4px 4px 0 var(--marrom)}
-  .success h2{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:24px;color:var(--laranja-700);margin-bottom:10px}
-  .success p{font-size:15px;line-height:1.55;color:var(--ink);max-width:34ch;margin:0 auto 8px}
-
-  @media (prefers-reduced-motion: reduce){*{transition:none!important}}
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 <body>
-  <div class="wrap">
+<main lang="pt-BR" style="min-height:100vh;background:#4c241a;display:flex;flex-direction:column;align-items:center;overflow-x:hidden">
+  <div style="width:100%;max-width:520px;display:flex;flex-direction:column">
 
-    <header class="hero">
-      <div class="sunburst"></div>
-      <div class="hero-inner">
-        <span class="eyebrow">Assine o Manifesto</span>
-        <img class="logo" src="img/logo-creme.png" alt="Pellizzari — pré-candidato a deputado estadual">
-        <h1><b>Educação</b> e futuro para o Rio</h1>
-        <p>Um chamado a todo mundo que acredita que o Rio pode voltar a investir na escola, valorizar o professor e abrir futuro pra juventude.</p>
+    <!-- HERO -->
+    <section style="position:relative;overflow:hidden;padding:28px 22px 26px;display:flex;flex-direction:column;gap:18px">
+      <img src="img/sunburst-laranja.png" alt="" aria-hidden="true" style="position:absolute;left:-170px;top:-130px;width:460px;opacity:.5;pointer-events:none;transform:rotate(-10deg)">
+      <img src="img/logo-creme.png" alt="Pellizzari — pré-candidato a deputado estadual" style="width:150px;position:relative;z-index:1;align-self:flex-end">
+      <h1 style="font-family:'Intro Rust',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(2rem,9vw,2.7rem);line-height:1.04;margin:0;color:#f8e8c5;position:relative;z-index:1">
+        <span style="position:relative;display:inline-block;color:#fac730">Educação<img src="img/rabisco.png" alt="" aria-hidden="true" style="position:absolute;left:0;bottom:-12px;width:100%;height:12px;object-fit:fill"></span>
+        e futuro para o Rio
+      </h1>
+      <p style="margin:0;color:#f0d9b5;font-size:1rem;max-width:42ch;position:relative;z-index:1">Um manifesto de quem acredita que a escola pública é o caminho — escrito pra ser assinado por muita gente.</p>
+      <div style="position:relative;z-index:1;display:flex;justify-content:center;margin-top:2px">
+        <img src="img/pelli-busto.png" alt="Renato Pellizzari sorrindo, recorte em meio-tom" style="display:block;width:min(70%,290px);margin-bottom:-26px;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35))">
       </div>
-    </header>
-
-    <section class="manifesto">
-      <h2>O nosso compromisso</h2>
-      <p>Acreditamos num Rio que coloca a <b>educação no centro</b>: professor valorizado, escola com estrutura, oportunidade pra juventude e cultura como direito.</p>
-      <p>Esse projeto não se constrói sozinho — se constrói com gente. <b>Assine o manifesto e venha construir com a gente.</b></p>
     </section>
 
-    <main class="form-area">
-      <div class="card">
+    <!-- FAIXA COMPROMISSO -->
+    <section style="background:#ff6b2d;padding:30px 22px 34px;position:relative;z-index:1">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <h2 style="font-family:'Intro Rust',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.35rem;line-height:1.08;margin:0;color:#fffdf7">O nosso compromisso</h2>
+        <p style="margin:0;color:#fffdf7;font-size:.97rem;max-width:52ch">Defendemos escola pública com estrutura, professor valorizado e merenda digna em cada canto do estado. Educação não é gasto: é o único projeto de futuro que o Rio ainda não tentou pra valer.</p>
+        <p style="margin:0;color:#fffdf7;font-size:.97rem;max-width:52ch">Este manifesto é uma construção coletiva da pré-campanha. Assinar não é votar — é dizer que você topa pensar, cobrar e caminhar junto pelos próximos meses.</p>
+      </div>
+    </section>
+
+    <!-- FORM CARD -->
+    <section style="position:relative;z-index:2;padding:0 16px 28px;margin-top:-14px">
+      <div style="background:#fffdf7;border:1px solid #e7d4a8;border-radius:24px;box-shadow:0 16px 38px rgba(0,0,0,.35);padding:1.7rem 1.4rem;position:relative">
+        <img src="img/faisca.png" alt="" aria-hidden="true" style="position:absolute;top:-20px;right:22px;height:46px">
+
         <div id="formBox">
+          <span style="font-weight:800;font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;color:#c6430f">Pré-campanha · sem pedir voto</span>
+          <h2 style="font-family:'Intro Rust',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.5rem;line-height:1.06;margin:.35rem 0 .5rem;color:#4c241a">Assine o manifesto</h2>
+          <p style="margin:0 0 1.3rem;color:#6b3626;font-size:.93rem">Seu nome fortalece a pauta da educação. Leva menos de um minuto.</p>
 
-          <div class="autofill-hint">
-            <span class="af-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15"><path d="M11 21h-1l1-7H7.5c-.88 0-.33-.75-.31-.78C8.48 10.94 10.41 7.6 13 3h1l-1 7h3.49c.4 0 .62.19.42.65C12.95 17.55 11 21 11 21z"/></svg></span>
-            <p>Toque nos campos: seu celular sugere seu <b>nome e WhatsApp</b> para preencher em segundos.</p>
-          </div>
+          <form id="form" style="display:flex;flex-direction:column;gap:1rem" novalidate>
+            <div style="display:flex;flex-direction:column;gap:.35rem">
+              <label for="nome" style="font-weight:700;font-size:.9rem;color:#4c241a">Nome</label>
+              <input class="inp" id="nome" name="nome" type="text" placeholder="Seu nome completo" autocomplete="name" autocapitalize="words">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem">
+              <label for="tel" style="font-weight:700;font-size:.9rem;color:#4c241a">WhatsApp</label>
+              <input class="inp" id="tel" name="whatsapp" type="tel" placeholder="(21) 99999-9999" inputmode="numeric" autocomplete="tel">
+              <p class="err" id="errTel" style="text-align:left">Digite um número válido com DDD.</p>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem">
+              <label for="email" style="font-weight:700;font-size:.9rem;color:#4c241a">E-mail <span style="font-weight:400;color:#8a503b">(opcional)</span></label>
+              <input class="inp" id="email" name="email" type="email" placeholder="voce@exemplo.com" inputmode="email" autocomplete="email">
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem">
+              <label for="cidade" style="font-weight:700;font-size:.9rem;color:#4c241a">Cidade</label>
+              <select class="inp" id="cidade" name="cidade">
+                <option value="" disabled selected>Escolha sua cidade</option>
+              </select>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:.35rem">
+              <label for="escola" style="font-weight:700;font-size:.9rem;color:#4c241a">Escola ou coletivo <span style="font-weight:400;color:#8a503b">(opcional)</span></label>
+              <input class="inp" id="escola" name="escola" type="text" placeholder="Onde você estuda, ensina ou milita" autocapitalize="words">
+            </div>
 
-          <div class="field">
-            <label class="lab" for="nome">Seu nome</label>
-            <input type="text" id="nome" placeholder="Como você assina?" autocomplete="name" autocapitalize="words">
-          </div>
-          <div class="field">
-            <label class="lab" for="tel">Seu WhatsApp</label>
-            <input type="tel" id="tel" placeholder="(00) 00000-0000" autocomplete="tel" inputmode="numeric">
-            <p class="err" id="errTel">Digite um número válido com DDD.</p>
-          </div>
-          <div class="field">
-            <label class="lab" for="email">E-mail <span class="opt">(opcional)</span></label>
-            <input type="email" id="email" placeholder="voce@email.com" autocomplete="email" inputmode="email">
-          </div>
-          <div class="field">
-            <label class="lab" for="cidade">Sua cidade <span class="opt">(opcional)</span></label>
-            <select id="cidade" class="placeholder">
-              <option value="" selected>Selecione sua cidade…</option>
-            </select>
-          </div>
-          <div class="field">
-            <label class="lab" for="inst">Escola, universidade ou coletivo <span class="opt">(opcional)</span></label>
-            <input type="text" id="inst" placeholder="Onde você estuda, trabalha ou milita" autocapitalize="words">
-          </div>
+            <fieldset style="border:2px solid #e7d4a8;border-radius:18px;padding:1rem 1rem .9rem;margin:0;display:flex;flex-direction:column;gap:.55rem">
+              <legend style="font-weight:700;font-size:.9rem;color:#4c241a;padding:0 .4rem">Como você quer ajudar?</legend>
+              <div id="ajudaGrid" style="display:flex;flex-direction:column;gap:.55rem"></div>
+            </fieldset>
 
-          <p class="ajuda-title">Como você quer ajudar? <span class="opt" style="font-weight:500;color:var(--muted)">(pode marcar mais de uma)</span></p>
-          <div class="ajuda-grid" id="ajudaGrid"></div>
+            <label style="display:flex;gap:.7rem;align-items:flex-start;font-size:.87rem;color:#6b3626;cursor:pointer">
+              <input type="checkbox" id="consent" style="width:20px;height:20px;margin-top:2px;accent-color:#ff6b2d;flex-shrink:0">
+              <span>Autorizo o uso dos meus dados para contato da pré-campanha, conforme a LGPD. Posso sair quando quiser.</span>
+            </label>
 
-          <label class="consent" for="consent">
-            <input type="checkbox" id="consent">
-            <span>Autorizo o recebimento de comunicações sobre a campanha por WhatsApp/e-mail e o uso dos meus dados para esse contato, conforme a LGPD. Posso me descadastrar quando quiser.</span>
-          </label>
+            <input type="text" id="hp" name="hp_url" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
-          <input type="text" id="hp" name="hp_url" tabindex="-1" autocomplete="off" aria-hidden="true"
-                 style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
-
-          <button class="cta" id="btn" type="button" disabled>Assinar o manifesto</button>
-          <p class="err" id="errSend" style="text-align:center;margin-top:10px">Não consegui enviar agora. Tente de novo.</p>
-          <p class="foot">Seus dados são usados apenas para o contato autorizado.<br>Nós respeitamos a Lei Geral de Proteção de Dados.</p>
+            <button class="btn" id="btn" type="submit" disabled>Assinar o manifesto</button>
+            <p class="err" id="errSend">Não consegui enviar agora. Tente de novo.</p>
+            <p style="margin:.15rem 0 0;font-size:.8rem;color:#8a503b;text-align:center">Sem spam. Você escolhe seus temas e sai quando quiser.</p>
+          </form>
         </div>
 
-        <div class="success" id="successBox">
-          <div class="check">✓</div>
-          <h2>Manifesto assinado! 🙌</h2>
-          <p>Obrigado por fazer parte, <b id="okName">amigo(a)</b>. Você agora é do time.</p>
-          <p>Entra na nossa <b>Comunidade no WhatsApp</b> pra acompanhar tudo em primeira mão e ajudar de perto 👇</p>
-          <a class="cta cta-amarelo" id="btnComunidade" href="#" target="_blank" rel="noopener"
-             style="display:block;text-decoration:none;text-align:center;margin-top:8px">Entrar na Comunidade do Pelli</a>
+        <div id="successBox" style="display:none">
+          <div style="text-align:center;padding:1.2rem 0;display:flex;flex-direction:column;align-items:center;gap:.9rem">
+            <div style="width:64px;height:64px;border-radius:999px;background:#ff6b2d;display:flex;align-items:center;justify-content:center;box-shadow:4px 4px 0 #4c241a">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fffdf7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.5 12.5l5 5 10-11"></path></svg>
+            </div>
+            <h2 style="font-family:'Intro Rust',sans-serif;font-weight:700;text-transform:uppercase;font-size:1.5rem;line-height:1.06;margin:0;color:#c6430f">Manifesto assinado!</h2>
+            <p style="margin:0;color:#6b3626;max-width:36ch;font-size:.95rem">Valeu, <span id="okName">companheiro</span>. Agora entra na Comunidade do Pelli pra acompanhar os próximos passos da caminhada.</p>
+            <a id="btnComunidade" href="#" target="_blank" rel="noopener" class="btn abtn" style="text-decoration:none;max-width:none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a9.9 9.9 0 0 0-8.5 15.1L2 22l5-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.4-.5c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.1s.9 2.4 1.1 2.6c.1.2 1.8 2.8 4.4 3.9 1.6.7 2.2.7 3 .6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3Z"></path></svg>
+              Entrar na Comunidade do Pelli
+            </a>
+          </div>
         </div>
       </div>
-    </main>
+    </section>
+
+    <!-- RODAPÉ -->
+    <footer style="padding:6px 22px 34px;display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+      <img src="img/tracos.png" alt="" aria-hidden="true" style="height:26px;opacity:.7">
+      <p style="margin:0;color:#cbb08f;font-size:.82rem;max-width:36ch">Renato Pellizzari · pré-candidato a Deputado Estadual · RJ. Isto é pré-campanha: aqui a gente não pede voto, pede companhia.</p>
+    </footer>
+
   </div>
+</main>
 
 <script>
   // ===== CONFIGURAÇÃO =====
   const FN_URL = "https://puihfdsshfpianxbjneg.supabase.co/functions/v1/manifesto";
   const COMUNIDADE_URL = "https://chat.whatsapp.com/GhcEBOG2gbYBqSLrL5Hl3r?mode=gi_t";
-  const OPCOES_AJUDA = [
-    "Ajudar financeiramente",
-    "Organizar um encontro com o Renato (em casa, com amigos)",
-    "Ajudar na minha escola ou universidade",
-    "Receber o kit de materiais em casa",
-    "Panfletagem no meu bairro",
-    "Ajudar no WhatsApp",
-    "Ajudar no Instagram",
-    "Cortes e edição de vídeos",
-    "Design gráfico",
-    "Outra forma de ajudar",
-  ];
+  const CIDADES = ["Rio de Janeiro","Niterói","São Gonçalo","Duque de Caxias","Nova Iguaçu",
+    "Belford Roxo","São João de Meriti","Magé","Itaboraí","Maricá","Petrópolis",
+    "Campos dos Goytacazes","Volta Redonda","Angra dos Reis","Cabo Frio","Outra cidade do RJ"];
+  const AJUDAS = ["Divulgar nas redes sociais","Conversar com amigos e vizinhos",
+    "Levar o manifesto pra minha escola","Organizar uma roda de conversa",
+    "Produzir conteúdo (foto, vídeo, arte)","Receber e distribuir materiais",
+    "Participar de caminhadas e eventos","Ser ponto de contato no meu bairro",
+    "Contribuir com ideias e propostas","Ainda não sei — me chamem!"];
 
   const $ = (id) => document.getElementById(id);
-  const nome=$('nome'), tel=$('tel'), email=$('email'), cidade=$('cidade'), inst=$('inst'),
+  const nome=$('nome'), tel=$('tel'), email=$('email'), cidade=$('cidade'), escola=$('escola'),
         consent=$('consent'), btn=$('btn'), errTel=$('errTel'), errSend=$('errSend'),
-        hp=$('hp'), grid=$('ajudaGrid');
-
+        hp=$('hp'), form=$('form'), grid=$('ajudaGrid');
   $('btnComunidade').href = COMUNIDADE_URL;
 
-  OPCOES_AJUDA.forEach((txt,i)=>{
-    const lbl=document.createElement('label'); lbl.className='opt-row';
-    lbl.innerHTML=`<input type="checkbox" name="ajuda" value="${txt.replace(/"/g,'&quot;')}"><span>${txt}</span>`;
+  CIDADES.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cidade.appendChild(o);});
+  AJUDAS.forEach(txt=>{
+    const lbl=document.createElement('label');
+    lbl.style.cssText='display:flex;gap:.65rem;align-items:flex-start;font-size:.9rem;color:#6b3626;cursor:pointer;padding:.15rem 0';
+    lbl.innerHTML=`<input type="checkbox" name="ajuda" value="${txt.replace(/"/g,'&quot;')}" style="width:20px;height:20px;margin-top:1px;accent-color:#ff6b2d;flex-shrink:0"><span>${txt}</span>`;
     grid.appendChild(lbl);
   });
-
-  // 92 municípios do Estado do RJ (IBGE)
-  const CIDADES_RJ=["Angra dos Reis","Aperibé","Araruama","Areal","Armação dos Búzios","Arraial do Cabo","Barra do Piraí","Barra Mansa","Belford Roxo","Bom Jardim","Bom Jesus do Itabapoana","Cabo Frio","Cachoeiras de Macacu","Cambuci","Campos dos Goytacazes","Cantagalo","Carapebus","Cardoso Moreira","Carmo","Casimiro de Abreu","Comendador Levy Gasparian","Conceição de Macabu","Cordeiro","Duas Barras","Duque de Caxias","Engenheiro Paulo de Frontin","Guapimirim","Iguaba Grande","Itaboraí","Itaguaí","Italva","Itaocara","Itaperuna","Itatiaia","Japeri","Laje do Muriaé","Macaé","Macuco","Magé","Mangaratiba","Maricá","Mendes","Mesquita","Miguel Pereira","Miracema","Natividade","Nilópolis","Niterói","Nova Friburgo","Nova Iguaçu","Paracambi","Paraíba do Sul","Paraty","Paty do Alferes","Petrópolis","Pinheiral","Piraí","Porciúncula","Porto Real","Quatis","Queimados","Quissamã","Resende","Rio Bonito","Rio Claro","Rio das Flores","Rio das Ostras","Rio de Janeiro","Santa Maria Madalena","Santo Antônio de Pádua","São Fidélis","São Francisco de Itabapoana","São Gonçalo","São João da Barra","São João de Meriti","São José de Ubá","São José do Vale do Rio Preto","São Pedro da Aldeia","São Sebastião do Alto","Sapucaia","Saquarema","Seropédica","Silva Jardim","Sumidouro","Tanguá","Teresópolis","Trajano de Moraes","Três Rios","Valença","Varre-Sai","Vassouras","Volta Redonda"];
-  CIDADES_RJ.forEach(c=>{const o=document.createElement('option');o.value=c;o.textContent=c;cidade.appendChild(o);});
-  cidade.addEventListener('change',()=>cidade.classList.toggle('placeholder', !cidade.value));
 
   const digitos=s=>s.replace(/\D/g,'');
   const telValido=()=>[10,11].includes(digitos(tel.value).length);
@@ -242,34 +176,37 @@
     tel.value=v; validar();
   });
   nome.addEventListener('input',validar);
+  cidade.addEventListener('change',validar);
   consent.addEventListener('change',validar);
 
   function validar(){
-    btn.disabled=!(nome.value.trim().length>=2 && telValido() && consent.checked);
+    btn.disabled=!(nome.value.trim().length>=2 && telValido() && cidade.value && consent.checked);
     errTel.classList.toggle('show', tel.value.length>0 && !telValido());
   }
 
-  btn.addEventListener('click',async()=>{
+  form.addEventListener('submit',async(e)=>{
+    e.preventDefault();
     if(btn.disabled) return;
     errSend.classList.remove('show');
     btn.disabled=true; const orig=btn.textContent; btn.textContent='Enviando…';
     const como=[...document.querySelectorAll('input[name="ajuda"]:checked')].map(c=>c.value);
     const payload={
       nome:nome.value.trim(), telefone:digitos(tel.value),
-      email:email.value.trim(), cidade:cidade.value.trim(), instituicao:inst.value.trim(),
+      email:email.value.trim(), cidade:cidade.value.trim(), instituicao:escola.value.trim(),
       como_ajudar:como, consentimento:true, origem:'manifesto', website:hp?hp.value:''
     };
     try{
       const r=await fetch(FN_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});
       const j=await r.json().catch(()=>({}));
       if(r.ok && j.ok){
-        $('okName').textContent = nome.value.trim().split(' ')[0] || 'amigo(a)';
-        $('formBox').style.display='none'; $('successBox').classList.add('show');
+        $('okName').textContent = nome.value.trim().split(' ')[0] || 'companheiro';
+        $('formBox').style.display='none';
+        $('successBox').style.display='block';
         window.scrollTo({top:0,behavior:'smooth'});
         return;
       }
       throw new Error(j.error||'falha');
-    }catch(e){
+    }catch(err){
       errSend.classList.add('show'); btn.disabled=false; btn.textContent=orig;
     }
   });
